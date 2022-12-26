@@ -5,6 +5,16 @@ Implementation of the Receipts API endpoint /receipts.
 ## OpenAPI Generator
 The basic service skeleton is generated using the openapi generator.
 
+- Templates can be retrieved with
+```bash
+docker run --rm -v "${PWD}:/local" \
+ openapitools/openapi-generator-cli author template \
+  -g aspnetcore \
+  -o /local/out
+```
+
+- The models can be generated with
+
 ````bash
 docker run --rm -v "${PWD}:/local" openapitools/openapi-generator-cli generate \
   -i /local/openapi.yaml \
