@@ -1,5 +1,5 @@
-# This file is the top-most EditorConfig file
 root = true
+# This file is the top-most EditorConfig file
 
 # All Files
 [*]
@@ -18,3 +18,16 @@ indent_style = tab
 
 [*.{yaml,json,csproj}]
 indent_size = 2
+
+
+# Microsoft .NET properties
+csharp_style_prefer_utf8_string_literals = true:suggestion
+csharp_style_var_elsewhere = true:suggestion
+csharp_style_var_for_built_in_types = true:suggestion
+csharp_style_var_when_type_is_apparent = true:suggestion
+
+# ReSharper properties
+resharper_place_accessorholder_attribute_on_same_line = false
+resharper_place_accessor_attribute_on_same_line = true
+resharper_place_field_attribute_on_same_line = false
+resharper_place_record_field_attribute_on_same_line = false

@@ -7,7 +7,10 @@ namespace Com.Refund.Services.Receipts.Models;
 [DataContract]
 public class ReceiptResponse
 {
-    [Required] [DataMember(Name = "id")] public Guid Id { get; set; }
+    [Required]
+    [DataMember(Name = "id")]
+    public Guid Id { get; set; }
+
 
     [Required]
     [DataMember(Name = "created")]
