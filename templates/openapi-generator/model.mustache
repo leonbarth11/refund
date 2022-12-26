@@ -1,6 +1,6 @@
-using System.Text;
 using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
+using System.Text;
 
 {{#models}}
 {{#model}}
@@ -10,18 +10,6 @@ namespace {{modelPackage}};
 public {{#modelClassModifier}}{{.}} {{/modelClassModifier}}class {{classname}}
 {
     {{#vars}}
-    {{#items.isEnum}}
-        {{#items}}
-            {{^complexType}}
-                {{>enumClass}}
-            {{/complexType}}
-        {{/items}}
-    {{/items.isEnum}}
-    {{#isEnum}}
-        {{^complexType}}
-            {{>enumClass}}
-        {{/complexType}}
-    {{/isEnum}}
     {{#required}}
     [Required]{{/required}}{{#pattern}}
     [RegularExpression("{{{.}}}")]{{/pattern}}{{#minLength}}{{#maxLength}}
@@ -30,12 +18,7 @@ public {{#modelClassModifier}}{{.}} {{/modelClassModifier}}class {{classname}}
     [MaxLength({{.}})]{{/maxLength}}{{/minLength}}{{#minimum}}{{#maximum}}
     [Range({{minimum}}, {{maximum}})]{{/maximum}}{{/minimum}}
     [DataMember(Name = "{{baseName}}")]
-    {{#isEnum}}
-    public {{{datatypeWithEnum}}}{{#isNullable}}?{{/isNullable}} {{name}} { get; set; }{{#defaultValue}} = {{{.}}};{{/defaultValue}}
-    {{/isEnum}}
-    {{^isEnum}}
     public {{{dataType}}} {{name}} { get; set; }{{#defaultValue}} = {{{.}}};{{/defaultValue}}
-    {{/isEnum}}
     {{^-last}}
 
     {{/-last}}
