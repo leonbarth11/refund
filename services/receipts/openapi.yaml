@@ -35,13 +35,22 @@ components:
 
     ReceiptsResponse:
       type: object
+      required:
+        - receipts
       properties:
         receipts:
           type: array
           items:
             $ref: '#/components/schemas/ReceiptResponse'
     ReceiptResponse:
+      description: "Contains information "
       type: "object"
+      required:
+        - id
+        - created
+        - amount
+        - currency
+        - description
       properties:
         id:
           $ref: '#/components/schemas/Guid'
@@ -55,7 +64,13 @@ components:
           $ref: '#/components/schemas/Description'
 
     ReceiptRequest:
+      description: "The Receipt Request Specification"
       type: "object"
+      required:
+        - created
+        - amount
+        - currency
+        - description
       properties:
         created:
           $ref: '#/components/schemas/DateTime'
@@ -85,7 +100,6 @@ paths:
     post:
       tags:
         - Receipts
-
       description: "Adds a receipt"
       requestBody:
         content:
@@ -99,4 +113,3 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ReceiptResponse'
-
