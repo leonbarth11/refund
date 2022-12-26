@@ -16,14 +16,16 @@ docker run --rm -v "${PWD}:/local" \
 - The models can be generated with
 
 ````bash
-docker run --rm -v "${PWD}:/local" openapitools/openapi-generator-cli generate \
+docker run --rm -v "${PWD}:/local" -v "${PWD}/../../templates/openapi-generator:/templates" \
+ openapitools/openapi-generator-cli generate \
   -i /local/openapi.yaml \
   -g aspnetcore \
   -o /local/out \
+  -t /templates \
   --additional-properties=aspnetCoreVersion=6.0,modelClassModifier=\
   --additional-properties=packageName=Com.Refund.Services.Receipts\
   --global-property models
 
- mv out/src/Com.Refund.Services.Receipts/Models src/Com.Refund.Services.Receipts/
+ mv -f out/src/Com.Refund.Services.Receipts/Models/* src/Com.Refund.Services.Receipts/Models/
  rm -r out
 ````
