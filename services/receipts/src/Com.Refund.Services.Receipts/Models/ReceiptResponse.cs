@@ -11,7 +11,6 @@ public class ReceiptResponse
     [DataMember(Name = "id")]
     public Guid Id { get; set; }
 
-
     [Required]
     [DataMember(Name = "created")]
     public DateTime Created { get; set; }
