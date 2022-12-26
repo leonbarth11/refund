@@ -1,0 +1,102 @@
+openapi: 3.0.3
+info:
+  title: 'Receipts API'
+  description: 'Get receipts.'
+  version: 1.0.0
+
+
+servers:
+  - url: 'http://localhost:5000'
+
+tags:
+  - name: Receipts
+
+components:
+  schemas:
+    Guid:
+      type: string
+      format: uuid
+      example: 'd9bfe812-65d7-4b1d-9857-2fd3259fdfea'
+    DateTime:
+      type: string
+      format: 'date-time'
+      example: '2019-12-05T05:30:00.000+05:30'
+    Amount:
+      type: number
+      format: decimal
+      example: 10.52
+    Currency:
+      type: string
+      format: iso-4217
+      example: EUR
+    Description:
+      type: string
+      example: 'Uber ride to the restaurant'
+
+    ReceiptsResponse:
+      type: object
+      properties:
+        receipts:
+          type: array
+          items:
+            $ref: '#/components/schemas/ReceiptResponse'
+    ReceiptResponse:
+      type: "object"
+      properties:
+        id:
+          $ref: '#/components/schemas/Guid'
+        created:
+          $ref: '#/components/schemas/DateTime'
+        amount:
+          $ref: '#/components/schemas/Amount'
+        currency:
+          $ref: '#/components/schemas/Currency'
+        description:
+          $ref: '#/components/schemas/Description'
+
+    ReceiptRequest:
+      type: "object"
+      properties:
+        created:
+          $ref: '#/components/schemas/DateTime'
+        amount:
+          $ref: '#/components/schemas/Amount'
+        currency:
+          $ref: '#/components/schemas/Currency'
+        description:
+          $ref: '#/components/schemas/Description'
+
+
+paths:
+  /receipts:
+    get:
+      tags:
+        - Receipts
+      description: "Gets all available receipts"
+      responses:
+        "200":
+          description: "List of receipts"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReceiptsResponse'
+
+
+    post:
+      tags:
+        - Receipts
+
+      description: "Adds a receipt"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReceiptRequest'
+      responses:
+        "201":
+          description: "Receipt created"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReceiptResponse'
+

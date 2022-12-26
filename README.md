@@ -24,3 +24,11 @@ Host github.com
     UseKeychain yes
     IdentityFile ~/.ssh/<name-key>
 ```
+
+### .NET
+
+Choose an IDE (I recommend Rider). Plugins:
+- OpenAPI Specifications
+- OpenApi Editor
+
+Install the current [.NET SDK](https://dotnet.microsoft.com/en-us/download).
