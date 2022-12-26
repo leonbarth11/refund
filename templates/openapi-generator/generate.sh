@@ -18,12 +18,12 @@ docker run --rm \
     -v "${OUTPUT}:/output" \
     openapitools/openapi-generator-cli generate \
     -g aspnetcore \
-    -c /templates/config.yaml \
     -t /templates \
     -i /input/openapi.yaml \
     --additional-properties=packageName="$1" \
-    --global-property models \
+    --additional-properties=aspnetCoreVersion=6.0 \
+    --global-property models,apis \
     -o /output
 
-cp -r -i "$OUTPUT"/* "$INPUT"
+cp -r "$OUTPUT"/* "$INPUT"
 rm -r "$OUTPUT"

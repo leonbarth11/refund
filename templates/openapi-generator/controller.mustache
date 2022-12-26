@@ -1,0 +1,37 @@
+using System.Text.Json;
+using Microsoft.AspNetCore.Mvc;
+using {{modelPackage}};
+
+namespace {{apiPackage}};
+
+{{#operations}}
+[ApiController]
+public class {{classname}}Controller : ControllerBase
+{ {{#operation}}
+    [{{httpMethod}}]
+    [Route("{{{basePathWithoutHost}}}{{{path}}}")]{{#authMethods}}{{#isApiKey}}
+    [Authorize(Policy = "{{name}}")]{{/isApiKey}}{{#isBasicBearer}}
+    [Authorize{{#scopes}}{{#-first}}(Roles = "{{/-first}}{{scope}}{{^-last}},{{/-last}}{{#-last}}"){{/-last}}{{/scopes}}]{{/isBasicBearer}}{{/authMethods}}{{#vendorExtensions.x-aspnetcore-consumes}}
+    [Consumes({{&vendorExtensions.x-aspnetcore-consumes}})]{{/vendorExtensions.x-aspnetcore-consumes}}{{#responses}}{{#dataType}}
+    [ProducesResponseType(statusCode: {{code}}, type: typeof({{&dataType}}))]{{/dataType}}{{/responses}}
+    {{#isDeprecated}}
+    [Obsolete]
+    {{/isDeprecated}}
+    public async Task<IActionResult> {{operationId}}({{#allParams}}{{>pathParam}}{{>queryParam}}{{>bodyParam}}{{>formParam}}{{>headerParam}}{{^-last}}{{^isCookieParam}}, {{/isCookieParam}}{{/-last}}{{/allParams}})
+    {
+{{#cookieParams}}
+        var {{paramName}} = Request.Cookies["{{paramName}}"];
+
+{{/cookieParams}}
+{{#examples}}
+        const string exampleJson = "{{{example}}}";
+{{/examples}}
+{{#responses}}{{#dataType}}
+        var example = JsonSerializer.Deserialize<{{&dataType}}>(exampleJson);
+
+        return StatusCode({{code}}, example);{{/dataType}}{{^dataType}}
+        return StatusCode({{code}});{{/dataType}}
+    }{{/responses}}
+    {{/operation}}
+}
+{{/operations}}
