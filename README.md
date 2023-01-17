@@ -1,8 +1,9 @@
 # Refund
 
 This repository the source code for the `Refund Application`.
+The application is a helm chart with various sub-charts.
 
-## Setup
+## Development Setup
 
 Code base can be cloned from the GitHub Repository.
 
@@ -30,5 +31,29 @@ Host github.com
 Choose an IDE (I recommend Rider). Plugins:
 - OpenAPI Specifications
 - OpenApi Editor
+- Kubernetes Plugin
 
 Install the current [.NET SDK](https://dotnet.microsoft.com/en-us/download).
+
+### Kubernetes
+
+Install the necessary tooling:
+```bash
+brew install kubectl k9s helm
+```
+
+
+## Test Setup
+Install minikube:
+```bash
+brew install minikube
+```
+Start it:
+```bash
+minikube start
+```
+
+Release the helm chart
+```bash
+helm install clunky-serval .
+```
