@@ -1,8 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Com.Refund.Services.Receipts", "services\receipts\src\Com.Refund.Services.Receipts\Com.Refund.Services.Receipts.csproj", "{C3AF630A-3431-4D4C-98D3-B0BE4C83E19A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Com.Refund.Services.Receipts", "charts\receipts\src\Com.Refund.Services.Receipts\Com.Refund.Services.Receipts.csproj", "{C3AF630A-3431-4D4C-98D3-B0BE4C83E19A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Com.Refund.Services.Receipts.Test", "services\receipts\test\Com.Refund.Services.Receipts.Test\Com.Refund.Services.Receipts.Test.csproj", "{6D0D90AD-971C-4567-87D3-2E7940AAFCEA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Com.Refund.Services.Receipts.Test", "charts\receipts\test\Com.Refund.Services.Receipts.Test\Com.Refund.Services.Receipts.Test.csproj", "{6D0D90AD-971C-4567-87D3-2E7940AAFCEA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
