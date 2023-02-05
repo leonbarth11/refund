@@ -1,7 +1,7 @@
 # Refund
 
 This repository the source code for the `Refund Application`.
-The application is a helm chart with various sub-charts.
+The application consists of various helm charts in the [charts](charts) folder.
 
 ## Development Setup
 
@@ -35,31 +35,16 @@ Choose an IDE (I recommend Rider). Plugins:
 
 Install the current [.NET SDK](https://dotnet.microsoft.com/en-us/download).
 
-#### Docker
-Install Docker for Desktop. To run and build the container:
-```bash
-DOCKER_ID=$(docker build -q -f charts/receipts/src/Com.Refund.Services.Receipts/Dockerfile .)
-docker run --rm -it $DOCKER_ID
-```
 
 
 ## Test Setup
 
 Install the necessary tooling:
 ```bash
-brew install kubectl k9s helm
+brew install kubectl k9s helm docker
 ```
 
 Install minikube:
 ```bash
 brew install minikube
-```
-Start it:
-```bash
-minikube start
-```
-
-Release the helm chart
-```bash
-helm install clunky-serval .
 ```
