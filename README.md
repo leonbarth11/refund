@@ -7,7 +7,7 @@ The application is a helm chart with various sub-charts.
 
 Code base can be cloned from the GitHub Repository.
 
-### SSH
+#### SSH
 
 Create a SSH public key
 
@@ -26,7 +26,7 @@ Host github.com
     IdentityFile ~/.ssh/<name-key>
 ```
 
-### .NET
+#### .NET
 
 Choose an IDE (I recommend Rider). Plugins:
 - OpenAPI Specifications
@@ -35,15 +35,21 @@ Choose an IDE (I recommend Rider). Plugins:
 
 Install the current [.NET SDK](https://dotnet.microsoft.com/en-us/download).
 
-### Kubernetes
+#### Docker
+Install Docker for Desktop. To run and build the container:
+```bash
+DOCKER_ID=$(docker build -q -f charts/receipts/src/Com.Refund.Services.Receipts/Dockerfile .)
+docker run --rm -it $DOCKER_ID
+```
+
+
+## Test Setup
 
 Install the necessary tooling:
 ```bash
 brew install kubectl k9s helm
 ```
 
-
-## Test Setup
 Install minikube:
 ```bash
 brew install minikube
