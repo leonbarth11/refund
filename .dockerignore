@@ -1,14 +1,17 @@
-.git
+﻿.git
 .idea
 bin/
 obj/
 run/
 
 .github
-src/
+Dockerfile
+templates/
 test/
+Chart.yaml
 openapi.yaml
 README.md
+values.yaml
 openapi-generator
 .dockerignore
 .DS_Store
